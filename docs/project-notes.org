@@ -1,0 +1,23 @@
+#+TITLE: Project Notes
+- Assembly implementation of test_and_set function
+- Use the following declaration
+  #+BEGIN_SRC C
+uint32 test_and_set(uint32 *ptr, uint32 new_value);
+  #+END_SRC
+- conceptually implement the following:
+  #+BEGIN_SRC C
+uint32 test_and_set(uint32 *ptr, uint32 new_value){
+    uint32 old_value = *ptr;
+    *ptr = new_value;
+    return old_value;
+}
+  #+END_SRC
+- [[https://www.felixcloutier.com/x86/xchg][XCHG — Exchange Register/Memory with Register]]
+- Exchanges the content of the first and second operands
+- If a memory operand is referenced, locking protocol automatically implemented for the duration of the exchange operation
+- I want pointer to be set to new value
+- I want to return the old value
+- xchg *ptr new_value
+- I want contents of ptr to be saved as old value
+- I want contents of ptr to be updated to new value
+- I want old value to be returned
